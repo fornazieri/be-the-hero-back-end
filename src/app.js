@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
 const app = express();
@@ -10,6 +11,8 @@ app.use(express.json()); //sempre antes das rotas, estou falando para o express 
 app.use(routes); //sempre abaixo do use express json
 //Rota / Recurso
 //resources é por exemplo /user /abc etc...
+
+app.use(errors());
 
 /*
 Metodos HTTP:
@@ -41,4 +44,5 @@ Query Builder: table(users).select('*').where()
 
 
 
-app.listen(3333);
+//app.listen(3333);
+module.exports = app;
